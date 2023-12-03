@@ -1,0 +1,3 @@
+[submodule "day3/libft"]
+	path = day3/libft
+	url = git@github.com:Poul0s/libft.git
