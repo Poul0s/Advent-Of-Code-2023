@@ -1,3 +1,9 @@
 [submodule "day3/libft"]
 	path = day3/libft
 	url = git@github.com:Poul0s/libft.git
+[submodule "day1/libft"]
+	path = day1/libft
+	url = git@github.com:Poul0s/libft.git
+[submodule "day2/libft"]
+	path = day2/libft
+	url = git@github.com:Poul0s/libft.git
