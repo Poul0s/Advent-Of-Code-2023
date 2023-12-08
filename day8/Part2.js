@@ -8,66 +8,47 @@ fs.readFile(inputFile, {encoding: "utf-8"}, (err, res) => {
 	{
 		res = res.split("\n");
 		var instructions = res[0];
-		var map = [];
+		var map = {};
 		let ghostPos = []
-		res = res.slice(2);
-		res.forEach(line => {
+		res.slice(2).forEach(line => {
 			let linepos; 
 			line = line.split("=");
 			linepos = line[0].trim();
 			if (linepos[2] == 'A')
-				ghostPos.push(get_string_int(linepos));
+				ghostPos.push(linepos);
 			line = line[1].split(",");
-			map[get_string_int(linepos)] = [
-				get_string_int(line[0].replaceAll(/[^a-zA-Z0-9]/g,"")),
-				get_string_int(line[1].replaceAll(/[^a-zA-Z0-9]/g,""))
+			map[linepos] = [
+				line[0].replace(/[^a-zA-Z0-9]/g,""),
+				line[1].replace(/[^a-zA-Z0-9]/g,"")
 			];
 		});
-		console.log(ghostPos);
-		console.log(map);
 		let moves = 0;
-		while (!is_all_ghost_at_end(ghostPos, moves))
+		while (has_ghostPos_still_searching(ghostPos))
 		{
 			let instruction_index = instructions[moves % instructions.length] == 'R' ? 1 : 0;
-			for (let i = 0; i < ghostPos.length; i++)
-				ghostPos[i] = map[ghostPos[i]][instruction_index];
 			moves++;
-			if (moves == Number.MAX_SAFE_INTEGER)
-				console.error("REACHED MAX INT")
+			for (let i = 0; i < ghostPos.length; i++)
+			{
+				if (ghostPos[i] != undefined)
+				{
+					ghostPos[i] = map[ghostPos[i]][instruction_index];
+					if (ghostPos[i][2] == 'Z')
+					{
+						console.log(`Found ${i} for ${moves} moves`) // you have to find what to do with these results :)
+						ghostPos[i] = undefined;
+					}
+				}
+			}
 		}
-		console.log(moves);
 	}
 })
 
-var _last = 0;
-function is_all_ghost_at_end(ghostPos, moves)
+function has_ghostPos_still_searching(ghostPos)
 {
-	var res = true;
-	var total = 0;
-	ghostPos.forEach(pos => {
-		if (pos < 10000)
-			res = false
-		else
-			total++;
-	})
-	if (total > _last)
+	for (let i = 0; i < ghostPos.length; i++)
 	{
-		_last = total;
-		console.log(`${total}/${ghostPos.length} are at final pos (${moves} moves)`);
+		if (ghostPos[i] != undefined)
+			return (true);
 	}
-	return (res);
-}
-
-var _converted_strings = []
-function get_string_int(str)
-{
-	var res = 0;
-	if (str[2] == 'A')
-		res += 1000
-		if (str[2] == 'Z')
-			res += 10000
-	while (_converted_strings[res] != undefined && _converted_strings[res] != str)
-		res++;
-	_converted_strings[res] = str;
-	return (res);
+	return (false);
 }
