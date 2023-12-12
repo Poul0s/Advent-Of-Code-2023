@@ -60,7 +60,6 @@ function countAllArrangements(rowData, index)
                 }
                 else
                     res += countAllArrangements(rowData, index + 1);
-
             }
         }
         rowData[0] = oldStr;
