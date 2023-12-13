@@ -6,7 +6,7 @@
 #    By: psalame <psalame@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 19:35:19 by psalame           #+#    #+#              #
-#    Updated: 2023/12/12 19:49:39 by psalame          ###   ########.fr        #
+#    Updated: 2023/12/13 16:08:59 by psalame          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJ		=	$(addprefix obj/, $(SRC:.c=.o))
 
 OBJ_DIR	=	$(sort $(dir $(OBJ)))
 
-NAME	=	Part2
+NAME	=	Part2bis
 
 LIBFT_PATH	=	libft
 

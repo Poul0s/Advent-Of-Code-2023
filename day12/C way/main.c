@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:50:20 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/12 20:06:09 by psalame          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:10:54 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*get_possibilities(void *lineraw)
 	free(data[1]);
 	free(data);
 	int	springsLen = strlen(springs);
-	*res = count_all_arrangements(springs, springsLen, condition, 0);
+	*res = count_all_arrangements(springs, springsLen, condition, 0, 0, 0);
 	free(springs);
 	free(condition.tab);
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:57:53 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/12 19:55:16 by psalame          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:10:47 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ typedef struct s_condition
 
 char	*parseSprings(char *data);
 t_condition	parseCondition(char *str);
-unsigned long long count_all_arrangements(char *springs, int springsLen, t_condition condition, int index);
+unsigned long long count_all_arrangements(char *springs, int springsLen, t_condition condition, int index, int conditionIndex, int conditionCount);
 
 #endif
