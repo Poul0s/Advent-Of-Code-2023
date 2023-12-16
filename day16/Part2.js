@@ -100,7 +100,7 @@ function startBeamSimulatiom(map, beam)
             }
             beam.x += beam.dirX;
             beam.y += beam.dirY;
-            startBeamSimulatiom(map, beam); // if not opti maybe loop it
+            startBeamSimulatiom(map, beam);
         }
         else if (map[beam.y][beam.x] == '.')
         {
